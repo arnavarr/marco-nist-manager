@@ -5,7 +5,8 @@ import {
   LayoutDashboard,
   Download,
   Menu,
-  X
+  X,
+  HelpCircle
 } from 'lucide-react';
 
 import { INITIAL_DATA } from './data/initialData';
@@ -13,6 +14,7 @@ import Dashboard from './components/Dashboard';
 import ControlList from './components/ControlList';
 import ControlEditor from './components/ControlEditor';
 import DataExport from './components/DataExport';
+import HelpSection from './components/HelpSection';
 
 // --- MAIN APP COMPONENT ---
 
@@ -56,8 +58,8 @@ export default function App() {
     <button
       onClick={() => { setView(id); setMobileMenuOpen(false); }}
       className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${view === id || (view === 'edit' && id === 'list')
-          ? "bg-blue-600 text-white shadow-lg shadow-blue-600/30"
-          : "text-slate-400 hover:bg-slate-800 hover:text-white"
+        ? "bg-blue-600 text-white shadow-lg shadow-blue-600/30"
+        : "text-slate-400 hover:bg-slate-800 hover:text-white"
         }`}
     >
       <Icon className="w-5 h-5" />
@@ -80,6 +82,7 @@ export default function App() {
           <NavItem id="list" label="Controles" icon={Shield} />
           <NavItem id="add" label="Añadir Nuevo" icon={Plus} />
           <NavItem id="export" label="Exportar" icon={Download} />
+          <NavItem id="help" label="Ayuda" icon={HelpCircle} />
         </nav>
         <div className="p-4 border-t border-slate-800 text-xs text-slate-500 text-center">
           v1.1.0 Modular
@@ -101,6 +104,7 @@ export default function App() {
           <NavItem id="list" label="Controles" icon={Shield} />
           <NavItem id="add" label="Añadir Nuevo" icon={Plus} />
           <NavItem id="export" label="Exportar" icon={Download} />
+          <NavItem id="help" label="Ayuda" icon={HelpCircle} />
         </div>
       )}
 
@@ -124,6 +128,7 @@ export default function App() {
           {view === 'add' && <ControlEditor onSave={handleAddControl} onCancel={() => setView('list')} />}
           {view === 'edit' && <ControlEditor control={editingControl} onSave={handleUpdateControl} onCancel={() => setView('list')} />}
           {view === 'export' && <DataExport controls={controls} />}
+          {view === 'help' && <HelpSection />}
         </div>
       </main>
     </div>
