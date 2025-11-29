@@ -1,6 +1,11 @@
 import fs from 'fs';
+import path from 'path';
 
-const content = fs.readFileSync('Marco.md', 'utf-8');
+const marcoPath = 'Marco.md';
+const targetPath = 'src/data/initialData.js';
+
+// Read Marco.md
+const content = fs.readFileSync(marcoPath, 'utf-8');
 const lines = content.split('\n');
 
 const controls = [];
@@ -10,6 +15,7 @@ let inConsiderations = false;
 // Helper to clean text
 const clean = (text) => text.replace(/^\*\*/, '').replace(/\*\*$/, '').trim();
 
+// Parse Marco.md
 for (let i = 0; i < lines.length; i++) {
     const line = lines[i].trim();
 
@@ -20,33 +26,17 @@ for (let i = 0; i < lines.length; i++) {
         currentControl = {
             id: clean(line.replace('- Identificador:', '')),
             layer: '',
-            zone: '', // We might need to infer zone or leave it empty if not explicitly in the item
+            zone: '',
             principle: '',
             objective: '',
             considerations: [],
-            nistReference: '', // Not always present in text, might need mapping or extraction if available
-            maturity: 3 // Default or extract if available
+            nistReference: '',
+            maturity: 3
         };
         inConsiderations = false;
     } else if (currentControl) {
         if (line.startsWith('- Capa de Seguridad:')) {
             currentControl.layer = clean(line.replace('- Capa de Seguridad:', ''));
-            // Infer zone based on layer or section headers if possible, but for now let's just get the layer.
-            // The zone is actually a higher level grouping in the MD file (e.g. "## Unmanaged Clients" is a layer, but "External Security" is a zone).
-            // The MD structure is:
-            // # Marco de arquitectura de seguridad
-            // ## Zone (e.g. Unmanaged Clients - wait, Unmanaged Clients is a layer in the intro, but here it seems to be a section)
-            // Actually, looking at lines 60-68:
-            // Zones: External Security, Infrastructure Security, Management of security, AI Security Considerations.
-            // Layers are listed under zones.
-
-            // Let's try to map layers to zones based on the intro text or hardcode the mapping if it's static.
-            // Mapping based on lines 60-85:
-            // External Security: Unmanaged Clients, Managed Clients (partially?), API Providers, Applications API Consumption, Physical Devices/Controllers (IoT)
-            // Infrastructure Security: Boundary Security, Network Security, Server Security, Containers Security, Application Security, Data & Cryptography Security, Post-Quantum Cryptography Security
-            // Management of security: Identity and Access Management, Monitoring Management
-            // AI Security Considerations: AI Security Considerations
-
         } else if (line.startsWith('- Principio:')) {
             currentControl.principle = clean(line.replace('- Principio:', ''));
         } else if (line.startsWith('- Objetivo:')) {
@@ -55,18 +45,12 @@ for (let i = 0; i < lines.length; i++) {
             inConsiderations = true;
         } else if (inConsiderations) {
             if (line.startsWith('- Identificador:')) {
-                // Should have been caught by the first if, but just in case
                 inConsiderations = false;
-                i--; // Reprocess line
+                i--;
             } else if (line.startsWith('-') || line.startsWith('+') || line.startsWith('*')) {
-                // It's a bullet point
                 currentControl.considerations.push(clean(line.replace(/^[-+*]\s+/, '')));
             } else if (line === '' || line.match(/^\d+\./)) {
-                // Empty line or numbered list start (sometimes headers are numbered like "1. Secure connection configuration")
-                // If it's a numbered header, it might be the start of a new section, but we only care about "- Identificador:" to start a new control.
-                // We stay in considerations until we hit a new key or end of block.
-                // But usually considerations are a list. If we hit something that doesn't look like a list item and is not empty, maybe we should stop?
-                // In the file, considerations are indented lists.
+                // Skip empty lines or numbered headers
             }
         }
     }
@@ -75,18 +59,12 @@ if (currentControl) {
     controls.push(currentControl);
 }
 
-// Post-processing to add Zones and NIST/Maturity if possible
-// The text doesn't explicitly have NIST or Maturity in the "- Key: Value" format for most controls.
-// The INITIAL_DATA had them. The user wants "all information available in Marco.md".
-// If Marco.md doesn't have NIST/Maturity for every control, I might have to leave them blank or keep defaults.
-// However, looking at the text, I don't see explicit "NIST Reference" or "Maturity" lines in the control blocks.
-// I will try to preserve existing data from INITIAL_DATA if the ID matches.
-
+// Zone Mapping
 const zoneMapping = {
     "Unsecured ENDPOINT": "External Security",
     "API Providers": "External Security",
     "Applications API Consumption": "External Security",
-    "Managed Clients": "External Security", // Wait, in the text it says "Managed Clients (Company Devices & BYOD)"
+    "Managed Clients": "External Security",
     "Physical Devices/Controllers (IoT)": "External Security",
     "Boundary Security": "Infrastructure Security",
     "Network Security": "Infrastructure Security",
@@ -100,25 +78,73 @@ const zoneMapping = {
     "MLOps AI Security": "AI Security Considerations"
 };
 
-// Fix some layer names to match mapping keys if necessary
-controls.forEach(c => {
-    // Clean up layer name
-    c.layer = c.layer.replace(/\+\+$/, '').trim(); // Remove ++ if present
+// Read existing data to preserve metadata
+let existingData = [];
+try {
+    if (fs.existsSync(targetPath)) {
+        const existingContent = fs.readFileSync(targetPath, 'utf-8');
+        // Simple regex extraction to avoid eval
+        // This is a bit hacky but safer than eval. 
+        // Or we can just try to match IDs and extract nist/maturity blocks.
 
-    // Assign zone
+        // Let's try to extract objects using a regex that matches { ... } blocks
+        // This is complex for nested objects (considerations array).
+        // Alternative: use a temporary node script to import the data and output it as JSON.
+        // But we are in the script now.
+
+        // Let's just do a simple regex scan for id, nistReference, maturity
+        const idRegex = /id:\s*"([^"]+)"/g;
+        const nistRegex = /nistReference:\s*"([^"]+)"/g;
+        const maturityRegex = /maturity:\s*(\d+)/g;
+
+        // This approach is flawed because we can't guarantee order or association easily with global regex.
+        // Better approach: We will just write the new data. The user asked to include controls from Marco.md.
+        // If we lose some manual edits, it's a trade-off for automation.
+        // BUT, I can try to be smart.
+
+        // Let's try to find specific ID blocks.
+        // We can iterate over our new controls, and for each ID, check if it exists in the file content
+        // and extract nist/maturity.
+
+        controls.forEach(c => {
+            const idPattern = new RegExp(`id:\\s*"${c.id}"[\\s\\S]*?nistReference:\\s*"([^"]+)"[\\s\\S]*?maturity:\\s*(\\d+)`, 'i');
+            const match = existingContent.match(idPattern);
+            if (match) {
+                c.nistReference = match[1];
+                c.maturity = parseInt(match[2], 10);
+            } else {
+                // Try to match just NIST if maturity is missing or vice versa (unlikely based on file format)
+                const nistMatch = existingContent.match(new RegExp(`id:\\s*"${c.id}"[\\s\\S]*?nistReference:\\s*"([^"]+)"`));
+                if (nistMatch) c.nistReference = nistMatch[1];
+
+                const maturityMatch = existingContent.match(new RegExp(`id:\\s*"${c.id}"[\\s\\S]*?maturity:\\s*(\\d+)`));
+                if (maturityMatch) c.maturity = parseInt(maturityMatch[1], 10);
+            }
+        });
+    }
+} catch (e) {
+    console.error("Error reading existing data:", e);
+}
+
+// Post-processing
+controls.forEach(c => {
+    c.layer = c.layer.replace(/\+\+$/, '').trim();
+
     if (zoneMapping[c.layer]) {
         c.zone = zoneMapping[c.layer];
     } else {
-        // Fallback or try to find partial match
         const key = Object.keys(zoneMapping).find(k => c.layer.includes(k));
         if (key) c.zone = zoneMapping[key];
         else c.zone = "Unknown Zone";
     }
 
-    // Assign random or default maturity if not found (since it's not in MD)
-    // Actually, I should check if I can map it from the existing INITIAL_DATA
-    c.maturity = 3; // Default
-    c.nistReference = "";
+    // Ensure defaults
+    if (!c.maturity) c.maturity = 3;
+    if (!c.nistReference) c.nistReference = "";
 });
 
-console.log(JSON.stringify(controls, null, 2));
+// Write to file
+const fileContent = `export const INITIAL_DATA = ${JSON.stringify(controls, null, 4)};`;
+fs.writeFileSync(targetPath, fileContent, 'utf-8');
+
+console.log(`Successfully wrote ${controls.length} controls to ${targetPath}`);
