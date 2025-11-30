@@ -13,7 +13,7 @@ export const INITIAL_DATA = [
             "Deberá contar con mecanismos de seguridad que garanticen los controles sobre las capas de Server Security, Application Security y Data Security, tales como Data obfuscation, PKI Authority, entre otras tantas.",
             "Será imprescindible garantizar que la solución cuenta con controles de monitorización, gestión de vulnerabilidades, correlación de eventos, auditorías periódicas, entre otras que hagan cumplir los requisitos definidos en la capa de Monitoring Management."
         ],
-        "nistReference": "NIST SP 800-207",
+        "nistReference": "",
         "maturity": 3
     },
     {
@@ -28,7 +28,7 @@ export const INITIAL_DATA = [
             "Garantizar que las APIs de terceros ofrecen mecanismos de autenticación y autorización robustos, tales como el uso de tokens JWT y/o MTLS para la autenticación y el uso de OAUTH 2.0 para la autorización. En ningún caso deberá hacerse uso de autenticación básica o autenticación basada en API KEY cuando los datos en tránsito sean sensibles, confidenciales o restringidos.",
             "Establecer los procesos y la documentación que permita recoger y mantener dentro del ciclo de vida del aplicativo el uso de las APIs de Terceros que están siendo consumidas por aplicativo."
         ],
-        "nistReference": "NIST SP 800-95",
+        "nistReference": "",
         "maturity": 3
     },
     {
@@ -45,8 +45,8 @@ export const INITIAL_DATA = [
             "Las APIs deberán contar con el uso de una Gobernanza centralizada que permita la estandarización de las políticas de seguridad así como la centralización de las mismas.",
             "Las APIs deberán contar con un desarrollo dentro del ciclo de vida de desarrollo seguro."
         ],
-        "nistReference": "NIST SP 800-53",
-        "maturity": 4
+        "nistReference": "",
+        "maturity": 3
     },
     {
         "id": "MC-EPS.01",
@@ -57,7 +57,7 @@ export const INITIAL_DATA = [
         "considerations": [
             "Hacer uso de un sistema de control de tráfico sobre los equipos gestionados por nosotros que permita aplicar políticas de filtrado, visibilidad y gobierno de estas, mediante el uso, al ser posible, de una solución basada en Cloud."
         ],
-        "nistReference": "NIST SP 800-124",
+        "nistReference": "",
         "maturity": 3
     },
     {
@@ -69,8 +69,8 @@ export const INITIAL_DATA = [
         "considerations": [
             "Hacer uso de un sistema EDR sobre nuestros equipos gestionados que permita garantizar aspectos tales como visibilidad, telemetría frente a amenazas, detección y protección dinámicas, respuesta rápida y solución basada en Cloud, entre otros, con objeto de cumplir con los requerimientos de Zero Trust."
         ],
-        "nistReference": "NIST SP 800-128",
-        "maturity": 4
+        "nistReference": "",
+        "maturity": 3
     },
     {
         "id": "MC-EPS.03",
@@ -84,8 +84,8 @@ export const INITIAL_DATA = [
             "Disponer de los sistemas y/o procedimientos que permitan administrar las identidades sobre los dispositivos gestionados de forma centralizada.",
             "Hacer uso de mecanismos que permitan implementar directivas de seguridad de forma centralizada."
         ],
-        "nistReference": "NIST SP 800-40",
-        "maturity": 2
+        "nistReference": "",
+        "maturity": 3
     },
     {
         "id": "MC-EPS.04",
@@ -98,8 +98,8 @@ export const INITIAL_DATA = [
             "Hacer uso de mecanismos que permitan aplicar directivas de prevención de pérdida de datos durante su uso de forma centralizada.",
             "Hacer uso de indicadores con objeto de monitorizar la actividad sobre los archivos con información confidencial o sensible."
         ],
-        "nistReference": "NIST SP 800-53 SC-7",
-        "maturity": 1
+        "nistReference": "",
+        "maturity": 3
     },
     {
         "id": "MC-EPS.05",
@@ -112,7 +112,7 @@ export const INITIAL_DATA = [
             "Haga uso de un catálogo de aplicaciones permitidas y establezca políticas a nivel granular mediante el uso de soluciones de tipo MAM.",
             "Garantice un control total sobre los end points de forma centralizada haciendo cumplir políticas tales como autenticación y autorización de usuarios, gestión de aplicaciones permitidas, políticas de eliminación de datos frente a robos, bastionado, etc."
         ],
-        "nistReference": "NIST SP 800-124",
+        "nistReference": "",
         "maturity": 3
     },
     {
@@ -126,7 +126,7 @@ export const INITIAL_DATA = [
             "Establezca los procedimientos que permitan garantizar el ciclo de vida de implantación de dichas guías.",
             "Implemente el bastionado a nivel de hardware y software y de aplicaciones."
         ],
-        "nistReference": "NIST SP 800-123",
+        "nistReference": "",
         "maturity": 3
     },
     {
@@ -136,8 +136,8 @@ export const INITIAL_DATA = [
         "principle": "Establecer controles con objeto de proteger los dispositivos gestionados frente a amenazas cibernéticas.",
         "objective": "Como parte de la primera línea de defensa, establecer mecanismos que proporcionen defensa contra amenazas cibernéticas tales como software malicioso, threats.",
         "considerations": [],
-        "nistReference": "NIST SP 800-83",
-        "maturity": 4
+        "nistReference": "",
+        "maturity": 3
     },
     {
         "id": "MC-EPS.08",
@@ -146,57 +146,7 @@ export const INITIAL_DATA = [
         "principle": "Establecer controles con objeto de proteger los dispositivos gestionados frente a amenazas cibernéticas.",
         "objective": "Garantizar que los dispositivos y su software cumplen con los requerimientos específicos en criterios de seguridad.",
         "considerations": [],
-        "nistReference": "NIST SP 800-124",
-        "maturity": 3
-    },
-    {
-        "id": "MC-EPS.05",
-        "layer": "Managed Clients",
-        "zone": "External Security",
-        "principle": "Establecer controles con objeto de proteger los dispositivos gestionados frente a amenazas cibernéticas.",
-        "objective": "Establecer los controles que permitan hacer cumplir las políticas de seguridad sobre dispositivos móviles (end points) corporativos o de entorno BYOD -- MDM, así como hacer cumplir las políticas de seguridad a nivel de aplicación, tales como browsers, clientes de correo, aplicaciones desarrolladas para la empresa, etc. - MAM.",
-        "considerations": [
-            "Haga uso de soluciones MDM con objeto de hacer cumplir las políticas de seguridad sobre los dispositivos gestionados de ámbito corporativo o BYOD.",
-            "Haga uso de un catálogo de aplicaciones permitidas y establezca políticas a nivel granular mediante el uso de soluciones de tipo MAM.",
-            "Garantice un control total sobre los endpoints de forma centralizada haciendo cumplir políticas tales como autenticación y autorización de usuarios, gestión de aplicaciones permitidas, políticas de eliminación de datos frente a robos, bastionado, etc."
-        ],
-        "nistReference": "NIST SP 800-124",
-        "maturity": 3
-    },
-    {
-        "id": "MC-EPS.06",
-        "layer": "Managed Clients",
-        "zone": "External Security",
-        "principle": "Establecer controles con objeto de proteger los dispositivos gestionados frente a amenazas cibernéticas.",
-        "objective": "Hacer uso de los sistemas o procedimientos ágiles, que garanticen la implementación de las Best Security Guides y/o Hardening Guides de los distintos fabricantes de software y hardware con objeto de reducir la superficie de ataque sobre los dispositivos gestionados por la compañía.",
-        "considerations": [
-            "Siempre que sea posible, haga uso de sistemas que permitan agilizar la implantación de las guías de mejores prácticas de seguridad y/o guías de bastionado sobre los dispositivos gestionados por la compañía.",
-            "Establezca los procedimientos que permitan garantizar el ciclo de vida de implantación de dichas guías.",
-            "Implemente el bastionado a nivel de hardware y software y de aplicaciones."
-        ],
-        "nistReference": "NIST SP 800-123",
-        "maturity": 3
-    },
-    {
-        "id": "MC-EPS.07",
-        "layer": "Managed Clients",
-        "zone": "External Security",
-        "principle": "Establecer controles con objeto de proteger los dispositivos gestionados frente a amenazas cibernéticas.",
-        "objective": "Como parte de la primera línea de defensa, establecer mecanismos que proporcionen defensa contra amenazas cibernéticas tales como software malicioso, threats.",
-        "considerations": [],
-        "nistReference": "NIST SP 800-83",
-        "maturity": 4
-    },
-    {
-        "id": "MC-EPS.08",
-        "layer": "Managed Clients",
-        "zone": "External Security",
-        "principle": "Establecer controles con objeto de proteger los dispositivos gestionados frente a amenazas cibernéticas.",
-        "objective": "Garantizar que los dispositivos y su software cumplen con los requerimientos específicos en criterios de seguridad.",
-        "considerations": [
-            "Deberá garantizar que los dispositivos gestionados y el software del cual hace uso, ya bien sean de ámbito corporativo o de ámbito BYOD, cumplen con los requerimientos específicos en materia de ciberseguridad. Para ello, deberá garantizar el cumplimiento del resto de controles."
-        ],
-        "nistReference": "NIST SP 800-124",
+        "nistReference": "",
         "maturity": 3
     },
     {
@@ -215,8 +165,8 @@ export const INITIAL_DATA = [
             "Políticas basadas en identificación de usuarios.",
             "Políticas basadas en actividad de red."
         ],
-        "nistReference": "NIST SP 800-41",
-        "maturity": 5
+        "nistReference": "",
+        "maturity": 3
     },
     {
         "id": "I-BS.02",
@@ -229,8 +179,8 @@ export const INITIAL_DATA = [
             "Asegúrese que la funcionalidad queda implementada para todo tipo de puerto y protocolo. Además, tenga en cuenta que deberá implementar dicha funcionalidad junto con TLS Decryption para aquel tráfico encriptado cuya naturaleza origen no atraviese las soluciones de WAF.",
             "Además, asegúrese de que IDS/IPS siempre esté optimizado para proporcionar alertas de alta calidad a la solución SIEM desplegada."
         ],
-        "nistReference": "NIST SP 800-94",
-        "maturity": 4
+        "nistReference": "",
+        "maturity": 3
     },
     {
         "id": "I-BS.03",
@@ -244,8 +194,8 @@ export const INITIAL_DATA = [
             "Evite utilizar una topología Mesh (en malla) implementando en su lugar una arquitectura basada en estrella, permitiendo así aislar las cargas de trabajo, facilitando la implementación de una red desmilitarizada e introduciendo identidad y seguridad a la solución.",
             "Certifique que el punto central de la solución en la topología actúa como concentrador de todas las conexiones entre redes no confiables y los activos, entre los diferentes radios y entre otros accesos provenientes fuera de la solución."
         ],
-        "nistReference": "NIST SP 800-41",
-        "maturity": 5
+        "nistReference": "",
+        "maturity": 3
     },
     {
         "id": "I-BS.04",
@@ -259,8 +209,8 @@ export const INITIAL_DATA = [
             "Haga uso de técnicas tales como multiplexing (multiplexación), isolation (aislamiento) y delaying como medida de reducir la exposición contra ataques de DoS o DDoS. Así también tenga en cuenta que deberá proporcionar funcionalidad de Dataguard (ofuscación y enmascaramiento) de cualquier dato sensible como datos personales o información sensible de tarjetas de crédito, entre otros.",
             "Realice una implantación para aislar las diferentes cargas de trabajo, por ejemplo, mediante el uso de diferentes listeners (IPs virtuales) o virtual services (servicios virtuales). Así también implemente aislamiento y filtrado para los diferentes flujos, siendo estos flujos de FrontEnd y flujos de Backend, proporcionando así una solución de seguridad de doble capa de balanceo, ya sea mediante el uso de diferentes elementos virtuales o el uso de capacidades de multitenant."
         ],
-        "nistReference": "NIST SP 800-41",
-        "maturity": 4
+        "nistReference": "",
+        "maturity": 3
     },
     {
         "id": "I-BS.05",
@@ -277,8 +227,8 @@ export const INITIAL_DATA = [
             "Utilice certificados/claves firmados por una CA externa como Digicert o GlobalSign para todos los servicios expuestos hacia internet o mediante enlaces privados hacia terceros.",
             "Asegúrese de establecer las medidas de seguridad del servicio de almacén de claves utilizado para la administración del ciclo de vida de las claves criptográficas y de los certificados."
         ],
-        "nistReference": "NIST SP 800-53 SC-8",
-        "maturity": 4
+        "nistReference": "",
+        "maturity": 3
     },
     {
         "id": "I-BS.06",
@@ -289,8 +239,8 @@ export const INITIAL_DATA = [
         "considerations": [
             "El perímetro deberá contar con las herramientas o soluciones que permitan proteger a los servicios frente a ataques de denegación de servicio en capas 3, 4 y 7 (según pila OSI). La solución deberá contar con protección DOS y DDoS (Distribuidos)."
         ],
-        "nistReference": "NIST SP 800-189",
-        "maturity": 5
+        "nistReference": "",
+        "maturity": 3
     },
     {
         "id": "I-BS.07",
@@ -301,8 +251,8 @@ export const INITIAL_DATA = [
         "considerations": [
             "Siempre y cuando los activos en la infraestructura cuenten con sistemas de protección de amenazas, se recomienda el uso de protección contra malware \"al vuelo\" sobre las capas perimetrales, haciendo uso de mecanismos como soluciones de SANDBOX dentro del módulo de threat prevention en los dispositivos de seguridad perimetral, o bien soluciones de protección de malware activas a nivel global sobre arquitecturas en entornos CLOUD."
         ],
-        "nistReference": "NIST SP 800-83",
-        "maturity": 4
+        "nistReference": "",
+        "maturity": 3
     },
     {
         "id": "I-BS.08",
@@ -316,8 +266,8 @@ export const INITIAL_DATA = [
             "Dichas protecciones deberán proporcionar mitigación frente a ataques de Credential Cracking, Account Creation, Search Abuse, shopping cart abuse, Checkout abuse, automated form submission, intellectual property harvesting, automated attack on Microservice, entre otras.",
             "De idéntica forma, verifique que queda activa la protección frente a L7 DDoS proporcionando protección frente a ataques Volumétricos, computacionales, asimétricos, con base vulnerabilidad y distribuidos. Para ello active y establezca los mecanismos de protección basados en TPS (básico), heavy URL Protection (frente a ataques de estrés), behavioral DOS Protection (basados en el comportamiento ML), Geolocation (Geolocalización) y Client Reputation."
         ],
-        "nistReference": "NIST SP 800-53",
-        "maturity": 4
+        "nistReference": "",
+        "maturity": 3
     },
     {
         "id": "I-BS.09",
@@ -329,8 +279,8 @@ export const INITIAL_DATA = [
             "Para los flujos Norte-Sur con protocolo HTTP(s) cerciórese que estos atraviesan una solución de Web Application Firewall (WAF) o RASP situada en el perímetro, con el objetivo de monitorizar y proteger los activos a nivel de aplicación.",
             "Deberá cerciorarse de que el WAF o RASP trabaja en un modelo de seguridad negativa (Negative Security Model) mediante el uso de Attack Signatures y Threat Campaigns y en un modelo de seguridad positiva mediante la securización de cookies, parámetros estáticos y dinámicos tanto en el head como en el body, aplicando login enforcement, brute force Mitigation, tracking session, XML y SOA protection, URL and Flow control, API protection, entre otras."
         ],
-        "nistReference": "NIST SP 800-53 SC-7",
-        "maturity": 4
+        "nistReference": "",
+        "maturity": 3
     },
     {
         "id": "I-BS.10",
@@ -381,7 +331,7 @@ export const INITIAL_DATA = [
             "Verifique la implementación de controles de seguridad centralizados, simples (economía de diseño), examinados, seguros y reutilizables para evitar controles duplicados, faltantes, ineficaces o inseguros.",
             "Verifique la disponibilidad de una lista de verificación de codificación segura, requisitos de seguridad, pautas o políticas para todos los desarrolladores y analistas."
         ],
-        "nistReference": "NIST SP 800-64",
+        "nistReference": "",
         "maturity": 3
     },
     {
@@ -399,8 +349,8 @@ export const INITIAL_DATA = [
             "La realización de manera automatizada de tantos análisis estáticos como de componentes sea necesario mediante la herramienta Veracode.",
             "La gestión, administración, implantación de requisitos, políticas y scores será definida por la CISO Office y DTI, quedando excluidas tales competencias a los negocios."
         ],
-        "nistReference": "NIST SP 800-115",
-        "maturity": 4
+        "nistReference": "",
+        "maturity": 3
     },
     {
         "id": "AP-API.01",
@@ -520,8 +470,8 @@ export const INITIAL_DATA = [
             "Para la gestión de Virtual Machines, utilizar Azure Bastion asegurando un principio de segmentación mediante control de tráfico hacia la red AzureBastionSubnet.",
             "Almacenar las claves privadas de acceso en repositorio seguro, integrar con Azure AD para la administración de identidades y acceso global, hacer uso de RBAC, PIM e incluso PAW si el recurso en sí forma parte del Tier-0 y habilitar los registros de recursos de Azure Bastion."
         ],
-        "nistReference": "NIST SP 800-53 AC-6",
-        "maturity": 4
+        "nistReference": "",
+        "maturity": 3
     },
     {
         "id": "M-IAM.02",
@@ -535,8 +485,8 @@ export const INITIAL_DATA = [
             "Emplear políticas de control de acceso basadas en identidad, roles y atributos, así como mecanismos de aplicación de acceso como listas de control de acceso, matrices de control de acceso, cifrado.",
             "Establecer mecanismos de autorización de accesos a información considerada clasificada y segmentarla por niveles."
         ],
-        "nistReference": "NIST SP 800-63",
-        "maturity": 4
+        "nistReference": "",
+        "maturity": 3
     },
     {
         "id": "M-IAM.03",
@@ -667,51 +617,6 @@ export const INITIAL_DATA = [
         ],
         "nistReference": "",
         "maturity": 3
-    },
-    {
-        "id": "M-IAM.02",
-        "layer": "Identity and Access Management",
-        "zone": "Management of security",
-        "principle": "Proteger y asegurar el acceso a recursos y sistemas mediante la gestión segura de la identidad, garantizando el uso de una capa adicional de seguridad en los inicios de sesión.",
-        "objective": "Establecer controles para asegurar y proteger el acceso a recursos y sistemas mediante la gestión segura de la identidad, incluyendo inicio de sesión únicos, mecanismos robustos de autenticación, administración de las identidades, inicios de servicios, acceso a aplicaciones y la supervisión de accesos condicionales y las anomalías en cuentas.",
-        "considerations": [
-            "Reforzar los mecanismos de acceso a los recursos para garantizar inicios de sesión únicos.",
-            "Asegurar el uso de mecanismos y protocolos de autenticación robustos.",
-            "Emplear políticas de control de acceso basadas en identidad, roles y atributos, así como mecanismos de aplicación de acceso como listas de control de acceso, matrices de control de acceso, cifrado.",
-            "Establecer mecanismos de autorización de accesos a información considerada clasificada y segmentarla por niveles."
-        ],
-        "nistReference": "NIST SP 800-63",
-        "maturity": 4
-    },
-    {
-        "id": "M-IAM.02",
-        "layer": "Identity and Access Management",
-        "zone": "Management of security",
-        "principle": "Proteger y asegurar el acceso a recursos y sistemas mediante la gestión segura de la identidad, garantizando el uso de una capa adicional de seguridad en los inicios de sesión.",
-        "objective": "Establecer controles para asegurar y proteger el acceso a recursos y sistemas mediante la gestión segura de la identidad, incluyendo inicio de sesión únicos, mecanismos robustos de autenticación, administración de las identidades, inicios de servicios, acceso a aplicaciones y la supervisión de accesos condicionales y las anomalías en cuentas.",
-        "considerations": [
-            "Reforzar los mecanismos de acceso a los recursos para garantizar inicios de sesión únicos.",
-            "Asegurar el uso de mecanismos y protocolos de autenticación robustos.",
-            "Emplear políticas de control de acceso basadas en identidad, roles y atributos, así como mecanismos de aplicación de acceso como listas de control de acceso, matrices de control de acceso, cifrado.",
-            "Establecer mecanismos de autorización de accesos a información considerada clasificada y segmentarla por niveles."
-        ],
-        "nistReference": "NIST SP 800-63",
-        "maturity": 4
-    },
-    {
-        "id": "M-IAM.02",
-        "layer": "Identity and Access Management",
-        "zone": "Management of security",
-        "principle": "Proteger y asegurar el acceso a recursos y sistemas mediante la gestión segura de la identidad, garantizando el uso de una capa adicional de seguridad en los inicios de sesión.",
-        "objective": "Establecer controles para asegurar y proteger el acceso a recursos y sistemas mediante la gestión segura de la identidad, incluyendo inicio de sesión únicos, mecanismos robustos de autenticación, administración de las identidades, inicios de servicios, acceso a aplicaciones y la supervisión de accesos condicionales y las anomalías en cuentas.",
-        "considerations": [
-            "Reforzar los mecanismos de acceso a los recursos para garantizar inicios de sesión únicos.",
-            "Asegurar el uso de mecanismos y protocolos de autenticación robustos.",
-            "Emplear políticas de control de acceso basadas en identidad, roles y atributos, así como mecanismos de aplicación de acceso como listas de control de acceso, matrices de control de acceso, cifrado.",
-            "Establecer mecanismos de autorización de accesos a información considerada clasificada y segmentarla por niveles."
-        ],
-        "nistReference": "NIST SP 800-63",
-        "maturity": 4
     },
     {
         "id": "AI-SMLC.01",

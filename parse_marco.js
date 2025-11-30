@@ -21,7 +21,12 @@ for (let i = 0; i < lines.length; i++) {
 
     if (line.startsWith('- Identificador:')) {
         if (currentControl) {
-            controls.push(currentControl);
+            const exists = controls.find(c => c.id === currentControl.id);
+            if (!exists) {
+                controls.push(currentControl);
+            } else {
+                console.warn(`Duplicate control found: ${currentControl.id}. Skipping.`);
+            }
         }
         currentControl = {
             id: clean(line.replace('- Identificador:', '')),
@@ -56,7 +61,12 @@ for (let i = 0; i < lines.length; i++) {
     }
 }
 if (currentControl) {
-    controls.push(currentControl);
+    const exists = controls.find(c => c.id === currentControl.id);
+    if (!exists) {
+        controls.push(currentControl);
+    } else {
+        console.warn(`Duplicate control found: ${currentControl.id}. Skipping.`);
+    }
 }
 
 // Zone Mapping
