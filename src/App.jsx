@@ -22,14 +22,14 @@ export default function App() {
   const [view, setView] = useState('dashboard'); // dashboard, list, add, edit, export
   const [controls, setControls] = useState(() => {
     // Persistencia local simple
-    const saved = localStorage.getItem('frameworkControls');
+    const saved = localStorage.getItem('frameworkControls_v2');
     return saved ? JSON.parse(saved) : INITIAL_DATA;
   });
   const [editingControl, setEditingControl] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    localStorage.setItem('frameworkControls', JSON.stringify(controls));
+    localStorage.setItem('frameworkControls_v2', JSON.stringify(controls));
   }, [controls]);
 
   const handleAddControl = (newControl) => {
@@ -85,7 +85,7 @@ export default function App() {
           <NavItem id="help" label="Ayuda" icon={HelpCircle} />
         </nav>
         <div className="p-4 border-t border-slate-800 text-xs text-slate-500 text-center">
-          v1.1.0 Modular
+          v1.2.0 Data Fix
         </div>
       </aside>
 

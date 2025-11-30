@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Search, ChevronDown, ChevronUp, Activity, FileText, CheckCircle, Edit, Trash2 } from 'lucide-react';
 import { Card } from './ui/Card';
 import { Badge } from './ui/Badge';
+import { MATURITY_LEVELS } from '../data/maturityLevels';
 
 const ControlList = ({ controls, onEdit, onDelete }) => {
     const [searchTerm, setSearchTerm] = useState("");
@@ -81,7 +82,12 @@ const ControlList = ({ controls, onEdit, onDelete }) => {
                                     <div className="flex flex-wrap items-center gap-2 mb-1">
                                         <span className="font-bold text-slate-800">{control.id}</span>
                                         <Badge type="blue">{control.layer}</Badge>
-                                        {control.nistReference && <Badge type="warning">{control.nistReference}</Badge>}
+                                        {(control.nistRef || control.nistReference) && (
+                                            <Badge type="blue">NIST: {control.nistRef || control.nistReference}</Badge>
+                                        )}
+                                        {control.isoRef && (
+                                            <Badge type="purple">ISO: {control.isoRef}</Badge>
+                                        )}
                                     </div>
                                     <p className="text-slate-600 text-sm truncate">{control.principle}</p>
                                 </div>
@@ -89,8 +95,9 @@ const ControlList = ({ controls, onEdit, onDelete }) => {
                                 <div className="flex items-center gap-4">
                                     <div className="hidden md:block text-right">
                                         <div className="text-xs text-slate-400 uppercase font-bold">Madurez</div>
-                                        <div className={`font-bold ${control.maturity >= 3 ? 'text-emerald-600' : 'text-amber-600'
-                                            }`}>Nivel {control.maturity}</div>
+                                        <div className={`font-bold px-2 py-0.5 rounded text-sm ${MATURITY_LEVELS[control.maturity]?.color || "text-slate-600"}`}>
+                                            {MATURITY_LEVELS[control.maturity]?.level} - {MATURITY_LEVELS[control.maturity]?.label}
+                                        </div>
                                     </div>
                                     {expandedId === control.id ? <ChevronUp className="text-slate-400" /> : <ChevronDown className="text-slate-400" />}
                                 </div>

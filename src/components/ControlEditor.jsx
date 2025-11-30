@@ -1,17 +1,27 @@
 import React, { useState } from 'react';
 import { X, Plus, Trash2, Save } from 'lucide-react';
 import { Card } from './ui/Card';
+import { MATURITY_LEVELS } from '../data/maturityLevels';
 
 const ControlEditor = ({ control, onSave, onCancel, controls = [] }) => {
-    const [formData, setFormData] = useState(control || {
-        id: "",
-        layer: "",
-        zone: "Infrastructure Security",
-        principle: "",
-        objective: "",
-        considerations: [""],
-        nistReference: "",
-        maturity: 0
+    const [formData, setFormData] = useState(() => {
+        const initial = control || {
+            id: "",
+            layer: "",
+            zone: "Infrastructure Security",
+            principle: "",
+            objective: "",
+            considerations: [""],
+            nistReference: "",
+            nistRef: "",
+            isoRef: "",
+            maturity: 0
+        };
+        // Migration: If nistReference exists but nistRef is empty, copy it
+        if (initial.nistReference && !initial.nistRef) {
+            initial.nistRef = initial.nistReference;
+        }
+        return initial;
     });
 
     const handleChange = (e) => {
@@ -43,7 +53,12 @@ const ControlEditor = ({ control, onSave, onCancel, controls = [] }) => {
                 return;
             }
         }
-        onSave(formData);
+        // Sync nistReference for backward compatibility
+        const dataToSave = {
+            ...formData,
+            nistReference: formData.nistRef // Keep nistReference in sync with nistRef
+        };
+        onSave(dataToSave);
     };
 
     return (
@@ -71,14 +86,25 @@ const ControlEditor = ({ control, onSave, onCancel, controls = [] }) => {
                         />
                     </div>
                     <div>
-                        <label className="block text-sm font-medium text-slate-700 mb-1">Referencia NIST / Standard</label>
+                        <label className="block text-sm font-medium text-slate-700 mb-1">Referencia NIST SP 800-53</label>
                         <input
                             type="text"
-                            name="nistReference"
-                            value={formData.nistReference}
+                            name="nistRef"
+                            value={formData.nistRef || ""}
                             onChange={handleChange}
                             className="w-full p-2 border border-slate-300 rounded focus:ring-2 focus:ring-blue-500 outline-none"
-                            placeholder="Ej: SP 800-53"
+                            placeholder="Ej: AC-1"
+                        />
+                    </div>
+                    <div>
+                        <label className="block text-sm font-medium text-slate-700 mb-1">Referencia ISO 27001/27002</label>
+                        <input
+                            type="text"
+                            name="isoRef"
+                            value={formData.isoRef || ""}
+                            onChange={handleChange}
+                            className="w-full p-2 border border-slate-300 rounded focus:ring-2 focus:ring-blue-500 outline-none"
+                            placeholder="Ej: A.9.1.1"
                         />
                     </div>
                     <div>
@@ -159,20 +185,46 @@ const ControlEditor = ({ control, onSave, onCancel, controls = [] }) => {
                 </div>
 
                 <div className="mb-8">
-                    <label className="block text-sm font-medium text-slate-700 mb-2">Nivel de Madurez Actual (0-5)</label>
-                    <div className="flex items-center space-x-4">
-                        <input
-                            type="range"
-                            min="0"
-                            max="5"
-                            step="1"
-                            name="maturity"
-                            value={formData.maturity}
-                            onChange={handleChange}
-                            className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer"
-                        />
-                        <span className={`font-bold text-lg ${formData.maturity >= 4 ? 'text-emerald-600' : formData.maturity >= 2 ? 'text-amber-600' : 'text-rose-600'
-                            }`}>{formData.maturity}</span>
+                    <label className="block text-sm font-medium text-slate-700 mb-4">Nivel de Madurez Actual</label>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mb-4">
+                        {MATURITY_LEVELS.map((level) => (
+                            <button
+                                key={level.level}
+                                onClick={() => setFormData(prev => ({ ...prev, maturity: level.level }))}
+                                className={`p-3 rounded-lg border text-left transition-all ${formData.maturity === level.level
+                                    ? `ring-2 ring-blue-500 ring-offset-2 ${level.headerColor ? '' : 'bg-slate-50'}`
+                                    : "border-slate-200 hover:border-blue-300 hover:bg-slate-50"
+                                    }`}
+                                style={{ backgroundColor: formData.maturity === level.level ? level.headerColor : undefined }}
+                            >
+                                <div className={`font-bold text-sm ${formData.maturity === level.level ? level.textColor : "text-slate-800"}`}>
+                                    {level.level} - {level.label}
+                                </div>
+                                <div className={`text-xs mt-1 ${formData.maturity === level.level ? level.textColor : "text-slate-500"}`}>
+                                    {level.subLabel}
+                                </div>
+                            </button>
+                        ))}
+                    </div>
+
+                    {/* Selected Level Details */}
+                    <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
+                        <h4 className="font-bold text-slate-800 mb-2 flex items-center gap-2">
+                            <span className="w-6 h-6 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-xs">
+                                {formData.maturity}
+                            </span>
+                            {MATURITY_LEVELS[formData.maturity]?.label}
+                        </h4>
+                        <div className="space-y-3 text-sm text-slate-600">
+                            <div>
+                                <strong className="text-slate-900 block mb-1">Definición:</strong>
+                                {MATURITY_LEVELS[formData.maturity]?.definition}
+                            </div>
+                            <div>
+                                <strong className="text-slate-900 block mb-1">Explicación:</strong>
+                                {MATURITY_LEVELS[formData.maturity]?.explanation}
+                            </div>
+                        </div>
                     </div>
                 </div>
 
