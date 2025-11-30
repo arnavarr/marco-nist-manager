@@ -8,10 +8,12 @@ const ControlList = ({ controls, onEdit, onDelete }) => {
     const [searchTerm, setSearchTerm] = useState("");
     const [filterLayer, setFilterLayer] = useState("All");
     const [filterNist, setFilterNist] = useState("All");
+    const [filterIso, setFilterIso] = useState("All");
     const [expandedId, setExpandedId] = useState(null);
 
     const layers = ["All", ...new Set(controls.map(c => c.layer).filter(Boolean))];
-    const nistRefs = ["All", ...new Set(controls.map(c => c.nistReference).filter(Boolean))];
+    const nistRefs = ["All", ...new Set(controls.map(c => c.nistRef).filter(Boolean))];
+    const isoRefs = ["All", ...new Set(controls.map(c => c.isoRef).filter(Boolean))];
 
     const filteredControls = controls.filter(c => {
         const matchesSearch =
@@ -19,8 +21,9 @@ const ControlList = ({ controls, onEdit, onDelete }) => {
             c.principle.toLowerCase().includes(searchTerm.toLowerCase()) ||
             c.objective.toLowerCase().includes(searchTerm.toLowerCase());
         const matchesLayer = filterLayer === "All" || c.layer === filterLayer;
-        const matchesNist = filterNist === "All" || c.nistReference === filterNist;
-        return matchesSearch && matchesLayer && matchesNist;
+        const matchesNist = filterNist === "All" || c.nistRef === filterNist;
+        const matchesIso = filterIso === "All" || c.isoRef === filterIso;
+        return matchesSearch && matchesLayer && matchesNist && matchesIso;
     });
 
     const toggleExpand = (id) => {
@@ -54,7 +57,14 @@ const ControlList = ({ controls, onEdit, onDelete }) => {
                         value={filterNist}
                         onChange={(e) => setFilterNist(e.target.value)}
                     >
-                        {nistRefs.map(n => <option key={n} value={n}>{n === "All" ? "Todos los Estándares" : n}</option>)}
+                        {nistRefs.map(n => <option key={n} value={n}>{n === "All" ? "Ref. NIST" : n}</option>)}
+                    </select>
+                    <select
+                        className="px-3 py-2 border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-blue-500 outline-none"
+                        value={filterIso}
+                        onChange={(e) => setFilterIso(e.target.value)}
+                    >
+                        {isoRefs.map(n => <option key={n} value={n}>{n === "All" ? "Ref. ISO" : n}</option>)}
                     </select>
                 </div>
             </div>

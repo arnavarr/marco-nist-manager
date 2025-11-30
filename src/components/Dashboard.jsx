@@ -37,23 +37,25 @@ const Dashboard = ({ controls }) => {
                 </Card>
 
                 <Card className="p-6 flex items-center space-x-4">
-                    <div className="p-3 bg-purple-100 rounded-full">
-                        <Lock className="w-8 h-8 text-purple-600" />
-                    </div>
-                    <div>
-                        <p className="text-sm text-slate-500">Zonas Definidas</p>
-                        <p className="text-3xl font-bold text-slate-800">{Object.keys(byZone).length}</p>
-                    </div>
-                </Card>
-
-                <Card className="p-6 flex items-center space-x-4">
                     <div className="p-3 bg-amber-100 rounded-full">
                         <Shield className="w-8 h-8 text-amber-600" />
                     </div>
                     <div>
                         <p className="text-sm text-slate-500">NIST Compliance</p>
                         <p className="text-3xl font-bold text-slate-800">
-                            {totalControls > 0 ? Math.round((controls.filter(c => c.nistReference).length / totalControls) * 100) : 0}%
+                            {totalControls > 0 ? Math.round((controls.filter(c => c.nistRef).length / totalControls) * 100) : 0}%
+                        </p>
+                    </div>
+                </Card>
+
+                <Card className="p-6 flex items-center space-x-4">
+                    <div className="p-3 bg-purple-100 rounded-full">
+                        <Lock className="w-8 h-8 text-purple-600" />
+                    </div>
+                    <div>
+                        <p className="text-sm text-slate-500">ISO Compliance</p>
+                        <p className="text-3xl font-bold text-slate-800">
+                            {totalControls > 0 ? Math.round((controls.filter(c => c.isoRef).length / totalControls) * 100) : 0}%
                         </p>
                     </div>
                 </Card>
