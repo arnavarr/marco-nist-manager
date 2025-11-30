@@ -13,7 +13,8 @@ export const INITIAL_DATA = [
             "Deberá contar con mecanismos de seguridad que garanticen los controles sobre las capas de Server Security, Application Security y Data Security, tales como Data obfuscation, PKI Authority, entre otras tantas.",
             "Será imprescindible garantizar que la solución cuenta con controles de monitorización, gestión de vulnerabilidades, correlación de eventos, auditorías periódicas, entre otras que hagan cumplir los requisitos definidos en la capa de Monitoring Management."
         ],
-        "nistReference": "",
+        "nistRef": "SC-7, AC-17",
+        "isoRef": "A.8.20, A.8.22",
         "maturity": 3
     },
     {
@@ -28,7 +29,8 @@ export const INITIAL_DATA = [
             "Garantizar que las APIs de terceros ofrecen mecanismos de autenticación y autorización robustos, tales como el uso de tokens JWT y/o MTLS para la autenticación y el uso de OAUTH 2.0 para la autorización. En ningún caso deberá hacerse uso de autenticación básica o autenticación basada en API KEY cuando los datos en tránsito sean sensibles, confidenciales o restringidos.",
             "Establecer los procesos y la documentación que permita recoger y mantener dentro del ciclo de vida del aplicativo el uso de las APIs de Terceros que están siendo consumidas por aplicativo."
         ],
-        "nistReference": "",
+        "nistRef": "SA-4, SC-8",
+        "isoRef": "A.5.14, A.8.24",
         "maturity": 3
     },
     {
@@ -45,7 +47,8 @@ export const INITIAL_DATA = [
             "Las APIs deberán contar con el uso de una Gobernanza centralizada que permita la estandarización de las políticas de seguridad así como la centralización de las mismas.",
             "Las APIs deberán contar con un desarrollo dentro del ciclo de vida de desarrollo seguro."
         ],
-        "nistReference": "",
+        "nistRef": "SC-7, SI-4",
+        "isoRef": "A.8.20, A.8.22, A.8.26",
         "maturity": 3
     },
     {
@@ -57,7 +60,8 @@ export const INITIAL_DATA = [
         "considerations": [
             "Hacer uso de un sistema de control de tráfico sobre los equipos gestionados por nosotros que permita aplicar políticas de filtrado, visibilidad y gobierno de estas, mediante el uso, al ser posible, de una solución basada en Cloud."
         ],
-        "nistReference": "",
+        "nistRef": "SC-7",
+        "isoRef": "A.8.20",
         "maturity": 3
     },
     {
@@ -69,7 +73,8 @@ export const INITIAL_DATA = [
         "considerations": [
             "Hacer uso de un sistema EDR sobre nuestros equipos gestionados que permita garantizar aspectos tales como visibilidad, telemetría frente a amenazas, detección y protección dinámicas, respuesta rápida y solución basada en Cloud, entre otros, con objeto de cumplir con los requerimientos de Zero Trust."
         ],
-        "nistReference": "",
+        "nistRef": "SI-4, RA-5",
+        "isoRef": "A.8.16, A.8.8",
         "maturity": 3
     },
     {
@@ -84,7 +89,8 @@ export const INITIAL_DATA = [
             "Disponer de los sistemas y/o procedimientos que permitan administrar las identidades sobre los dispositivos gestionados de forma centralizada.",
             "Hacer uso de mecanismos que permitan implementar directivas de seguridad de forma centralizada."
         ],
-        "nistReference": "",
+        "nistRef": "SI-2, AC-2",
+        "isoRef": "A.8.8, A.5.16",
         "maturity": 3
     },
     {
@@ -98,7 +104,8 @@ export const INITIAL_DATA = [
             "Hacer uso de mecanismos que permitan aplicar directivas de prevención de pérdida de datos durante su uso de forma centralizada.",
             "Hacer uso de indicadores con objeto de monitorizar la actividad sobre los archivos con información confidencial o sensible."
         ],
-        "nistReference": "",
+        "nistRef": "SI-4, SC-28",
+        "isoRef": "A.8.12",
         "maturity": 3
     },
     {
@@ -112,7 +119,8 @@ export const INITIAL_DATA = [
             "Haga uso de un catálogo de aplicaciones permitidas y establezca políticas a nivel granular mediante el uso de soluciones de tipo MAM.",
             "Garantice un control total sobre los end points de forma centralizada haciendo cumplir políticas tales como autenticación y autorización de usuarios, gestión de aplicaciones permitidas, políticas de eliminación de datos frente a robos, bastionado, etc."
         ],
-        "nistReference": "",
+        "nistRef": "AC-19",
+        "isoRef": "A.8.1",
         "maturity": 3
     },
     {
@@ -126,7 +134,8 @@ export const INITIAL_DATA = [
             "Establezca los procedimientos que permitan garantizar el ciclo de vida de implantación de dichas guías.",
             "Implemente el bastionado a nivel de hardware y software y de aplicaciones."
         ],
-        "nistReference": "",
+        "nistRef": "CM-6",
+        "isoRef": "A.8.9",
         "maturity": 3
     },
     {
@@ -136,7 +145,8 @@ export const INITIAL_DATA = [
         "principle": "Establecer controles con objeto de proteger los dispositivos gestionados frente a amenazas cibernéticas.",
         "objective": "Como parte de la primera línea de defensa, establecer mecanismos que proporcionen defensa contra amenazas cibernéticas tales como software malicioso, threats.",
         "considerations": [],
-        "nistReference": "",
+        "nistRef": "SI-3",
+        "isoRef": "A.8.7",
         "maturity": 3
     },
     {
@@ -146,7 +156,8 @@ export const INITIAL_DATA = [
         "principle": "Establecer controles con objeto de proteger los dispositivos gestionados frente a amenazas cibernéticas.",
         "objective": "Garantizar que los dispositivos y su software cumplen con los requerimientos específicos en criterios de seguridad.",
         "considerations": [],
-        "nistReference": "",
+        "nistRef": "CM-2",
+        "isoRef": "A.8.9",
         "maturity": 3
     },
     {
@@ -165,7 +176,8 @@ export const INITIAL_DATA = [
             "Políticas basadas en identificación de usuarios.",
             "Políticas basadas en actividad de red."
         ],
-        "nistReference": "",
+        "nistRef": "SC-7",
+        "isoRef": "A.8.20, A.8.22",
         "maturity": 3
     },
     {
@@ -179,7 +191,8 @@ export const INITIAL_DATA = [
             "Asegúrese que la funcionalidad queda implementada para todo tipo de puerto y protocolo. Además, tenga en cuenta que deberá implementar dicha funcionalidad junto con TLS Decryption para aquel tráfico encriptado cuya naturaleza origen no atraviese las soluciones de WAF.",
             "Además, asegúrese de que IDS/IPS siempre esté optimizado para proporcionar alertas de alta calidad a la solución SIEM desplegada."
         ],
-        "nistReference": "",
+        "nistRef": "SI-4, SC-7",
+        "isoRef": "A.8.16, A.8.20",
         "maturity": 3
     },
     {
@@ -194,7 +207,8 @@ export const INITIAL_DATA = [
             "Evite utilizar una topología Mesh (en malla) implementando en su lugar una arquitectura basada en estrella, permitiendo así aislar las cargas de trabajo, facilitando la implementación de una red desmilitarizada e introduciendo identidad y seguridad a la solución.",
             "Certifique que el punto central de la solución en la topología actúa como concentrador de todas las conexiones entre redes no confiables y los activos, entre los diferentes radios y entre otros accesos provenientes fuera de la solución."
         ],
-        "nistReference": "",
+        "nistRef": "SC-7",
+        "isoRef": "A.8.22",
         "maturity": 3
     },
     {
@@ -209,7 +223,8 @@ export const INITIAL_DATA = [
             "Haga uso de técnicas tales como multiplexing (multiplexación), isolation (aislamiento) y delaying como medida de reducir la exposición contra ataques de DoS o DDoS. Así también tenga en cuenta que deberá proporcionar funcionalidad de Dataguard (ofuscación y enmascaramiento) de cualquier dato sensible como datos personales o información sensible de tarjetas de crédito, entre otros.",
             "Realice una implantación para aislar las diferentes cargas de trabajo, por ejemplo, mediante el uso de diferentes listeners (IPs virtuales) o virtual services (servicios virtuales). Así también implemente aislamiento y filtrado para los diferentes flujos, siendo estos flujos de FrontEnd y flujos de Backend, proporcionando así una solución de seguridad de doble capa de balanceo, ya sea mediante el uso de diferentes elementos virtuales o el uso de capacidades de multitenant."
         ],
-        "nistReference": "",
+        "nistRef": "SC-7, SC-8",
+        "isoRef": "A.8.20, A.8.26",
         "maturity": 3
     },
     {
@@ -227,7 +242,8 @@ export const INITIAL_DATA = [
             "Utilice certificados/claves firmados por una CA externa como Digicert o GlobalSign para todos los servicios expuestos hacia internet o mediante enlaces privados hacia terceros.",
             "Asegúrese de establecer las medidas de seguridad del servicio de almacén de claves utilizado para la administración del ciclo de vida de las claves criptográficas y de los certificados."
         ],
-        "nistReference": "",
+        "nistRef": "SC-8, SC-13",
+        "isoRef": "A.8.24",
         "maturity": 3
     },
     {
@@ -239,7 +255,8 @@ export const INITIAL_DATA = [
         "considerations": [
             "El perímetro deberá contar con las herramientas o soluciones que permitan proteger a los servicios frente a ataques de denegación de servicio en capas 3, 4 y 7 (según pila OSI). La solución deberá contar con protección DOS y DDoS (Distribuidos)."
         ],
-        "nistReference": "",
+        "nistRef": "SC-5",
+        "isoRef": "A.8.20",
         "maturity": 3
     },
     {
@@ -251,7 +268,8 @@ export const INITIAL_DATA = [
         "considerations": [
             "Siempre y cuando los activos en la infraestructura cuenten con sistemas de protección de amenazas, se recomienda el uso de protección contra malware \"al vuelo\" sobre las capas perimetrales, haciendo uso de mecanismos como soluciones de SANDBOX dentro del módulo de threat prevention en los dispositivos de seguridad perimetral, o bien soluciones de protección de malware activas a nivel global sobre arquitecturas en entornos CLOUD."
         ],
-        "nistReference": "",
+        "nistRef": "SI-3",
+        "isoRef": "A.8.7",
         "maturity": 3
     },
     {
@@ -266,7 +284,8 @@ export const INITIAL_DATA = [
             "Dichas protecciones deberán proporcionar mitigación frente a ataques de Credential Cracking, Account Creation, Search Abuse, shopping cart abuse, Checkout abuse, automated form submission, intellectual property harvesting, automated attack on Microservice, entre otras.",
             "De idéntica forma, verifique que queda activa la protección frente a L7 DDoS proporcionando protección frente a ataques Volumétricos, computacionales, asimétricos, con base vulnerabilidad y distribuidos. Para ello active y establezca los mecanismos de protección basados en TPS (básico), heavy URL Protection (frente a ataques de estrés), behavioral DOS Protection (basados en el comportamiento ML), Geolocation (Geolocalización) y Client Reputation."
         ],
-        "nistReference": "",
+        "nistRef": "SI-4",
+        "isoRef": "A.8.16",
         "maturity": 3
     },
     {
@@ -279,7 +298,8 @@ export const INITIAL_DATA = [
             "Para los flujos Norte-Sur con protocolo HTTP(s) cerciórese que estos atraviesan una solución de Web Application Firewall (WAF) o RASP situada en el perímetro, con el objetivo de monitorizar y proteger los activos a nivel de aplicación.",
             "Deberá cerciorarse de que el WAF o RASP trabaja en un modelo de seguridad negativa (Negative Security Model) mediante el uso de Attack Signatures y Threat Campaigns y en un modelo de seguridad positiva mediante la securización de cookies, parámetros estáticos y dinámicos tanto en el head como en el body, aplicando login enforcement, brute force Mitigation, tracking session, XML y SOA protection, URL and Flow control, API protection, entre otras."
         ],
-        "nistReference": "",
+        "nistRef": "SI-4, SC-7",
+        "isoRef": "A.8.26",
         "maturity": 3
     },
     {
@@ -299,7 +319,8 @@ export const INITIAL_DATA = [
             "Se hará uso del protocolo TLS con versiones y cifrados altos definidos en los estándares de ciberseguridad. Además, será necesario requerir autenticación de cadena de certificados contra una CA conocida.",
             "Se deberá hacer uso de capacitación en seguridad de TI para los usuarios finales consumidores de correo electrónico."
         ],
-        "nistReference": "",
+        "nistRef": "SI-3, SC-8",
+        "isoRef": "A.5.14, A.8.7",
         "maturity": 3
     },
     {
@@ -313,7 +334,8 @@ export const INITIAL_DATA = [
             "Disponer de un plan de pruebas que verifique la operatividad de dichas medidas de Resiliencia Tecnológica y el cumplimiento de los valores técnicos recabados en los BIAS.",
             "Disponer de un plan de mejoras que alineen los valores obtenidos con los demandados por negocio, si es que hubiera diferencias relevantes, o bien, la asunción del gap por parte del área gestora o negocio."
         ],
-        "nistReference": "",
+        "nistRef": "CP-2",
+        "isoRef": "A.5.30",
         "maturity": 3
     },
     {
@@ -331,7 +353,8 @@ export const INITIAL_DATA = [
             "Verifique la implementación de controles de seguridad centralizados, simples (economía de diseño), examinados, seguros y reutilizables para evitar controles duplicados, faltantes, ineficaces o inseguros.",
             "Verifique la disponibilidad de una lista de verificación de codificación segura, requisitos de seguridad, pautas o políticas para todos los desarrolladores y analistas."
         ],
-        "nistReference": "",
+        "nistRef": "SA-11, SA-15",
+        "isoRef": "A.8.25",
         "maturity": 3
     },
     {
@@ -341,7 +364,7 @@ export const INITIAL_DATA = [
         "principle": "Establecer las auditorías y análisis de seguridad en el código necesarias para su puesta y mantenimiento en producción.",
         "objective": "Garantizar que las aplicaciones cumplen con los requerimientos específicos en criterios de seguridad durante todo el ciclo de vida.",
         "considerations": [
-            "Se deberán integrar todos los desarrollos con las plataformas y sistemas de versionado y análisis de código requeridas por la compañía.",
+            "Se deberán integrar todos los desarrollos con las plataformas y sistemas de versionado e integración GITHUB de la compañía.",
             "El análisis SAST y SCA es requisito indispensable.",
             "El análisis DAST no es de aplicación por defecto, puede ser requerido por la CISO Office.",
             "El análisis RAST o Pentest de Red Team deberá realizarse según planificación y recursos del negocio, siendo siempre requisito indispensable previa puesta en producción.",
@@ -349,7 +372,8 @@ export const INITIAL_DATA = [
             "La realización de manera automatizada de tantos análisis estáticos como de componentes sea necesario mediante la herramienta Veracode.",
             "La gestión, administración, implantación de requisitos, políticas y scores será definida por la CISO Office y DTI, quedando excluidas tales competencias a los negocios."
         ],
-        "nistReference": "",
+        "nistRef": "SA-11",
+        "isoRef": "A.8.29",
         "maturity": 3
     },
     {
@@ -366,7 +390,8 @@ export const INITIAL_DATA = [
             "Se debe cumplir con los requisitos genéricos de verificación de seguridad del servicio web (SOAP, RestFul...).",
             "Asegure el cumplimiento con la ley de protección de datos en el manejo y transacción de datos entre módulos, APIs o componentes de terceros."
         ],
-        "nistReference": "",
+        "nistRef": "SA-4, SI-7",
+        "isoRef": "A.5.19, A.8.26",
         "maturity": 3
     },
     {
@@ -382,7 +407,8 @@ export const INITIAL_DATA = [
             "Para la consecución de pruebas y testing del aplicativo no podrán hacerse uso de bases de datos en producción y de datos reales de clientes y servicios.",
             "Para la implantación de un entorno de desarrollo deberá cumplirse con todos los requisitos expuestos en la norma vigente."
         ],
-        "nistReference": "",
+        "nistRef": "CM-2, SA-8",
+        "isoRef": "A.8.31",
         "maturity": 3
     },
     {
@@ -419,7 +445,8 @@ export const INITIAL_DATA = [
             "gcc -ffunction-sections -fdata-sections file.c -o file.o: Separa funciones y variables en secciones.",
             "clang -ffunction-sections -fdata-sections file.c -o file.o: Opción similar en Clang."
         ],
-        "nistReference": "",
+        "nistRef": "SC-28, SA-11",
+        "isoRef": "A.8.28",
         "maturity": 3
     },
     {
@@ -439,7 +466,8 @@ export const INITIAL_DATA = [
             "Se deberá cumplir con los requisitos de prevención de deserialización, utilizando controles de integridad y cifrados.",
             "Se debe cumplir con los requisitos de seguridad necesarios para los encabezados HTTP y la validación de los mismos."
         ],
-        "nistReference": "",
+        "nistRef": "SI-10",
+        "isoRef": "A.8.28",
         "maturity": 3
     },
     {
@@ -455,7 +483,8 @@ export const INITIAL_DATA = [
             "Se deben implementar cuantos mecanismos de resiliencia sean necesarios.",
             "Todos los archivos ejecutables y las bibliotecas que pertenecen a la aplicación están cifrados a nivel de archivo y/o el código importante y los segmentos de datos, dentro de los ejecutables, están cifrados o empaquetados. El análisis estático trivial no revela códigos o datos importantes."
         ],
-        "nistReference": "",
+        "nistRef": "AU-2, CP-9",
+        "isoRef": "A.8.15, A.8.13",
         "maturity": 3
     },
     {
@@ -470,7 +499,8 @@ export const INITIAL_DATA = [
             "Para la gestión de Virtual Machines, utilizar Azure Bastion asegurando un principio de segmentación mediante control de tráfico hacia la red AzureBastionSubnet.",
             "Almacenar las claves privadas de acceso en repositorio seguro, integrar con Azure AD para la administración de identidades y acceso global, hacer uso de RBAC, PIM e incluso PAW si el recurso en sí forma parte del Tier-0 y habilitar los registros de recursos de Azure Bastion."
         ],
-        "nistReference": "",
+        "nistRef": "AC-6, SC-7",
+        "isoRef": "A.8.20, A.8.22",
         "maturity": 3
     },
     {
@@ -485,7 +515,8 @@ export const INITIAL_DATA = [
             "Emplear políticas de control de acceso basadas en identidad, roles y atributos, así como mecanismos de aplicación de acceso como listas de control de acceso, matrices de control de acceso, cifrado.",
             "Establecer mecanismos de autorización de accesos a información considerada clasificada y segmentarla por niveles."
         ],
-        "nistReference": "",
+        "nistRef": "IA-2, AC-2",
+        "isoRef": "A.5.16, A.8.5",
         "maturity": 3
     },
     {
@@ -498,7 +529,8 @@ export const INITIAL_DATA = [
             "Implementar controles de acceso granular para garantizar que los usuarios y sistemas solo tengan acceso a los recursos y datos necesarios para realizar sus funciones autorizadas.",
             "Establecer mecanismos para asignar los permisos a usuarios autorizados y los procedimientos necesarios para administrar los permisos."
         ],
-        "nistReference": "",
+        "nistRef": "AC-6",
+        "isoRef": "A.5.15, A.8.2",
         "maturity": 3
     },
     {
@@ -512,7 +544,8 @@ export const INITIAL_DATA = [
             "Habilitar el registro de los recursos en la nube para cumplir con los requisitos de investigación de incidentes y respuestas de seguridad y cumplimiento normativo.",
             "Habilitar el registro de los servicios de red para admitir las investigaciones de incidentes relacionadas con la red, la búsqueda de amenazas y la generación de alertas de seguridad."
         ],
-        "nistReference": "",
+        "nistRef": "AU-2, AC-2",
+        "isoRef": "A.8.15",
         "maturity": 3
     },
     {
@@ -530,7 +563,8 @@ export const INITIAL_DATA = [
             "Restringir el acceso a los recursos en función de las condiciones.",
             "Restringir la exposición de credenciales y secretos."
         ],
-        "nistReference": "",
+        "nistRef": "AC-2",
+        "isoRef": "A.5.16",
         "maturity": 3
     },
     {
@@ -544,7 +578,8 @@ export const INITIAL_DATA = [
             "Implementar controles de acceso basados en roles (RBAC).",
             "Aplicar la autenticación y la autorización de forma adecuada: esto puede incluir el uso de autenticación multifactor (MFA), la integración con servicios de directorio como Azure Active Directory (AAD) y la configuración de políticas de autorización granular."
         ],
-        "nistReference": "",
+        "nistRef": "AC-2, AC-3",
+        "isoRef": "A.5.15, A.5.16",
         "maturity": 3
     },
     {
@@ -561,7 +596,8 @@ export const INITIAL_DATA = [
             "Configurar un acceso de emergencia para asegurar que no quede bloqueado por accidente de la infraestructura. Estas cuentas deberán guardarse bajo llave y solo ciertas personas de la organización deberán tener acceso a ellas.",
             "Seguir el principio de administración suficiente para administrar los permisos en un nivel específico. Utilizar para ello control de acceso basado en roles y/o acceso basado en atributos."
         ],
-        "nistReference": "",
+        "nistRef": "AC-6, AC-2",
+        "isoRef": "A.8.2",
         "maturity": 3
     },
     {
@@ -574,7 +610,8 @@ export const INITIAL_DATA = [
             "Establecer procesos robustos para gestionar los accesos privilegiados en la administración de los recursos corporativos.",
             "Aplicar autenticación multifactor (MFA) para accesos privilegiados."
         ],
-        "nistReference": "",
+        "nistRef": "IA-2",
+        "isoRef": "A.8.5",
         "maturity": 3
     },
     {
@@ -588,7 +625,8 @@ export const INITIAL_DATA = [
             "Gestión de accesos y permisos: Se deben aplicar controles de acceso y permisos adecuados para limitar el acceso a los secretos de la aplicación solo a usuarios y servicios autorizados.",
             "Rotación regular de secretos: Se debe implementar un proceso para rotar regularmente los secretos de la aplicación, como contraseñas y claves API, para reducir el riesgo de compromiso debido a la exposición prolongada."
         ],
-        "nistReference": "",
+        "nistRef": "IA-5",
+        "isoRef": "A.5.17",
         "maturity": 3
     },
     {
@@ -602,7 +640,8 @@ export const INITIAL_DATA = [
             "Aplicar controles de acceso y permisos adecuados solo a usuarios y servicios autorizados.",
             "Implementar un proceso seguro para la gestión de claves de cifrado utilizadas para proteger las identidades y accesos tanto en la nube como on-premise."
         ],
-        "nistReference": "",
+        "nistRef": "SC-28, SC-8",
+        "isoRef": "A.8.24",
         "maturity": 3
     },
     {
@@ -615,7 +654,8 @@ export const INITIAL_DATA = [
             "Definir y gestionar las políticas y tecnologías que garanticen la protección de comunicaciones que hacen uso de certificados digitales de PKI.",
             "Automatización de los ciclos de creación, renovación y revocación de los certificados emitidos por la PKI y gestión de estos."
         ],
-        "nistReference": "",
+        "nistRef": "SC-12",
+        "isoRef": "A.8.24",
         "maturity": 3
     },
     {
@@ -639,7 +679,8 @@ export const INITIAL_DATA = [
             "PENDIENTE",
             "PENDIENTE"
         ],
-        "nistReference": "",
+        "nistRef": "SA-11",
+        "isoRef": "A.8.25",
         "maturity": 3
     },
     {
@@ -653,7 +694,8 @@ export const INITIAL_DATA = [
             "Debe comprender las leyes de su jurisdicción en relación con el manejo y almacenamiento de datos. Es requisito indispensable la valoración por el departamento legal de la compañía. (enmascaramiento, cifrado, protección de bases de datos)",
             "Verificar la calidad y precisión de los datos de origen antes de entrenar un modelo de ML."
         ],
-        "nistReference": "",
+        "nistRef": "PT-1, SA-4",
+        "isoRef": "A.5.34",
         "maturity": 3
     },
     {
@@ -669,7 +711,8 @@ export const INITIAL_DATA = [
             "Se deben realizar ataques simulados contra sus algoritmos para aprender cómo construir defensas contra ataques de envenenamiento de datos.",
             "PENDIENTE"
         ],
-        "nistReference": "",
+        "nistRef": "SI-10, SA-11",
+        "isoRef": "A.8.28, A.8.16",
         "maturity": 3
     },
     {
@@ -688,7 +731,8 @@ export const INITIAL_DATA = [
             "V4: Verificación de control de acceso",
             "V5: Requisitos de verificación de codificación, desinfección y validación"
         ],
-        "nistReference": "",
+        "nistRef": "AU-2, AU-3",
+        "isoRef": "A.8.15",
         "maturity": 3
     }
 ];
