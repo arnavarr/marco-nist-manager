@@ -125,7 +125,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto">
           {view === 'dashboard' && <Dashboard controls={controls} />}
           {view === 'list' && <ControlList controls={controls} onEdit={startEdit} onDelete={handleDeleteControl} />}
-          {view === 'add' && <ControlEditor onSave={handleAddControl} onCancel={() => setView('list')} />}
+          {view === 'add' && <ControlEditor onSave={handleAddControl} onCancel={() => setView('list')} controls={controls} />}
           {view === 'edit' && <ControlEditor control={editingControl} onSave={handleUpdateControl} onCancel={() => setView('list')} />}
           {view === 'export' && <DataExport controls={controls} />}
           {view === 'help' && <HelpSection />}

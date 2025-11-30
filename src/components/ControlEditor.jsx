@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { X, Plus, Trash2, Save } from 'lucide-react';
 import { Card } from './ui/Card';
 
-const ControlEditor = ({ control, onSave, onCancel }) => {
+const ControlEditor = ({ control, onSave, onCancel, controls = [] }) => {
     const [formData, setFormData] = useState(control || {
         id: "",
         layer: "",
@@ -32,6 +32,18 @@ const ControlEditor = ({ control, onSave, onCancel }) => {
     const removeConsideration = (index) => {
         const newConsiderations = formData.considerations.filter((_, i) => i !== index);
         setFormData(prev => ({ ...prev, considerations: newConsiderations }));
+    };
+
+    const handleSave = () => {
+        // Validation: Check for duplicate ID if creating new control
+        if (!control) {
+            const exists = controls.some(c => c.id === formData.id);
+            if (exists) {
+                alert("ID already exists");
+                return;
+            }
+        }
+        onSave(formData);
     };
 
     return (
@@ -168,7 +180,7 @@ const ControlEditor = ({ control, onSave, onCancel }) => {
                     <button onClick={onCancel} className="px-4 py-2 text-slate-600 hover:bg-slate-100 rounded-lg">
                         Cancelar
                     </button>
-                    <button onClick={() => onSave(formData)} className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center shadow-md">
+                    <button onClick={handleSave} className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center shadow-md">
                         <Save className="w-4 h-4 mr-2" /> Guardar Control
                     </button>
                 </div>
